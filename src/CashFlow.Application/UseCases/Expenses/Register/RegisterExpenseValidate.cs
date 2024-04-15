@@ -12,7 +12,7 @@ public class RegisterExpenseValidate : AbstractValidator<RequestRegisterExpenseJ
             .WithMessage("The title is required.");
 
         RuleFor(expense => expense.Amount)
-            .GreaterThan(0)
+            .GreaterThanOrEqualTo(0)
             .WithMessage("The Amount must be greater than zero.");
 
         RuleFor(expense => expense.Date)
