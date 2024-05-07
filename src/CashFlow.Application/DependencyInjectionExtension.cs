@@ -1,5 +1,4 @@
 ﻿using CashFlow.Application.UseCases.Expenses.Register;
-using CashFlow.Domain.Repositories.Expenses;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CashFlow.Application;
