@@ -123,6 +123,9 @@
   <data name="EXPENSES_CANNOT_BE_FOR_FUTURE" xml:space="preserve">
     <value>Despesas não podem ficar para o futuro.</value>
   </data>
+  <data name="EXPENSE_NOT_FOUNT" xml:space="preserve">
+    <value>Despesa não encontrada</value>
+  </data>
   <data name="PAYMENT_TYPE_NOT_VALID" xml:space="preserve">
     <value>O tipo de pagamento não é valido.</value>
   </data>

@@ -2,6 +2,7 @@
 using CashFlow.Exception.ExceptionBase;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System;
 
 namespace CashFlow.Api.Filters;
 
@@ -32,6 +33,13 @@ public class ExceptionFilter : IExceptionFilter
 
             context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
             context.Result = new BadRequestObjectResult(errorMessage);
+        }
+        else if (context.Exception is NotFoundException notFoundException)
+        {
+            var errorMessage = new ResponseErrorJson(notFoundException.Message);
+
+            context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+            context.Result = new NotFoundObjectResult(errorMessage);
         }
         else
         {
