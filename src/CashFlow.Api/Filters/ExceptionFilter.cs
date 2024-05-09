@@ -22,32 +22,14 @@ public class ExceptionFilter : IExceptionFilter
 
     private void HandleProjectException(ExceptionContext context)
     {
-        if(context.Exception is ErrorOnValidationException)
-        {
-            // Podemox fazer tanto do jeito q esta comentado quanto o outro. A diferença é que no primeiro, caso context.Exception não consig ser do tipo inferido,
-            // ele ira ser nulo, ja na segunda opção, ele vai estouorar um erro
-            //  var exception = context.Exception as ErrorOnValidationException;
-            var exception = (ErrorOnValidationException)context.Exception;
+        // Podemox fazer tanto do jeito q esta comentado quanto o outro. A diferença é que no primeiro, caso context.Exception não consig ser do tipo inferido,
+        // ele ira ser nulo, ja na segunda opção, ele vai estouorar um erro
+        //  var cashFlowException = context.Exception as ErrorOnValidationException;
+        var cashFlowException = (CashFlowException)context.Exception;
+        var errorMessage = new ResponseErrorJson(cashFlowException.Message);
 
-            var errorMessage = new ResponseErrorJson(exception.Errors);
-
-            context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
-            context.Result = new BadRequestObjectResult(errorMessage);
-        }
-        else if (context.Exception is NotFoundException notFoundException)
-        {
-            var errorMessage = new ResponseErrorJson(notFoundException.Message);
-
-            context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
-            context.Result = new NotFoundObjectResult(errorMessage);
-        }
-        else
-        {
-            var errorMessage = new ResponseErrorJson(context.Exception.Message);
-
-            context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
-            context.Result = new BadRequestObjectResult(errorMessage);
-        }
+        context.HttpContext.Response.StatusCode = cashFlowException.StatusCode;
+        context.Result = new ObjectResult(errorMessage);
     }
     
     private void ThrowUnknownError(ExceptionContext context)
