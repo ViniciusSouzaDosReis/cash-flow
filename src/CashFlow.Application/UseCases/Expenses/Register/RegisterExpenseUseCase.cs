@@ -39,7 +39,7 @@ public class RegisterExpenseUseCase : IRegisterExpenseUseCase
 
     private void Validate(RequestExpenseJson request)
     {
-        var validate = new RegisterExpenseValidate();
+        var validate = new ExpenseValidate();
 
         var result = validate.Validate(request);
 

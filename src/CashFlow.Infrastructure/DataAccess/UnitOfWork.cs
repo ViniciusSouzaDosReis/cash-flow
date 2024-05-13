@@ -1,12 +1,11 @@
 ﻿using CashFlow.Domain.Repositories;
-using Microsoft.EntityFrameworkCore;
 
 namespace CashFlow.Infrastructure.DataAccess;
 
-public class UnitOfWork : IUnitOfWork
+internal class UnitOfWork : IUnitOfWork
 {
-    private readonly DbContext _dbContext;
-    public UnitOfWork(DbContext dbContext)
+    private readonly CashFlowDbContext _dbContext;
+    public UnitOfWork(CashFlowDbContext dbContext)
     {
         _dbContext = dbContext;
     }
