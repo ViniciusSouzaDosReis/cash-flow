@@ -30,6 +30,7 @@ public static class DependencyInjectioRGtension
     {
         services.AddScoped<IExpensesWriteOnlyRepositories, ExpensesRepository>();
         services.AddScoped<IExpensesReadOnlyRepositories, ExpensesRepository>();
+        services.AddScoped<IExpensesUpdateOnlyRepositories, ExpensesRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
     }
 }

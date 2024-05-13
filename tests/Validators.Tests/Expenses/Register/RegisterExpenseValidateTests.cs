@@ -1,6 +1,5 @@
-﻿using CashFlow.Application.UseCases.Expenses.Register;
+﻿using CashFlow.Application.UseCases.Expenses;
 using CashFlow.Communication.Enums;
-using CashFlow.Communication.Requests;
 using CashFlow.Exception;
 using CommonTestUtilities.Requests;
 using FluentAssertions;
@@ -13,9 +12,9 @@ public class RegisterExpenseValidateTests
     public void Success()
     {
         //Arrange
-        var validate = new RegisterExpenseValidate();
+        var validate = new ExpenseValidate();
 
-        var request = RequestRegisterExpenseJsonBuilder.Builder();
+        var request = RequestExpenseJsonBuilder.Builder();
         //Act
         var result = validate.Validate(request);
 
@@ -30,9 +29,9 @@ public class RegisterExpenseValidateTests
     public void Error_Title_Empty(string title)
     {
         //Arrange
-        var validate = new RegisterExpenseValidate();
+        var validate = new ExpenseValidate();
 
-        var request = RequestRegisterExpenseJsonBuilder.Builder();
+        var request = RequestExpenseJsonBuilder.Builder();
         request.Title = title;
         //Act
         var result = validate.Validate(request);
@@ -49,9 +48,9 @@ public class RegisterExpenseValidateTests
     public void Error_Amount_Invalid(decimal amount)
     {
         //Arrange
-        var validate = new RegisterExpenseValidate();
+        var validate = new ExpenseValidate();
 
-        var request = RequestRegisterExpenseJsonBuilder.Builder();
+        var request = RequestExpenseJsonBuilder.Builder();
         request.Amount = amount;
         //Act
         var result = validate.Validate(request);
@@ -65,9 +64,9 @@ public class RegisterExpenseValidateTests
     public void Error_Date_Future()
     {
         //Arrange
-        var validate = new RegisterExpenseValidate();
+        var validate = new ExpenseValidate();
 
-        var request = RequestRegisterExpenseJsonBuilder.Builder();
+        var request = RequestExpenseJsonBuilder.Builder();
         request.Date = DateTime.Now.AddDays(1);
         //Act
         var result = validate.Validate(request);
@@ -81,9 +80,9 @@ public class RegisterExpenseValidateTests
     public void Error_Payment_Type_Invalid()
     {
         //Arrange
-        var validate = new RegisterExpenseValidate();
+        var validate = new ExpenseValidate();
 
-        var request = RequestRegisterExpenseJsonBuilder.Builder();
+        var request = RequestExpenseJsonBuilder.Builder();
         request.PaymentType = (PaymentType)224;
         //Act
         var result = validate.Validate(request);
