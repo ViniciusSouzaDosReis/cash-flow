@@ -26,7 +26,7 @@ public class ExceptionFilter : IExceptionFilter
         // ele ira ser nulo, ja na segunda opção, ele vai estouorar um erro
         //  var cashFlowException = context.Exception as ErrorOnValidationException;
         var cashFlowException = (CashFlowException)context.Exception;
-        var errorMessage = new ResponseErrorJson(cashFlowException.Message);
+        var errorMessage = new ResponseErrorJson(cashFlowException.GetErrors());
 
         context.HttpContext.Response.StatusCode = cashFlowException.StatusCode;
         context.Result = new ObjectResult(errorMessage);

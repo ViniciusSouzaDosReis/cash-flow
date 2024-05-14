@@ -1,5 +1,5 @@
 ﻿namespace CashFlow.Application.UseCases.Expenses.Delete;
-internal interface IDeleteExepenseUseCase
+public interface IDeleteExepenseUseCase
 {
     Task Execute(long id);
 }

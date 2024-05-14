@@ -34,7 +34,7 @@ public class RegisterExpenseUseCase : IRegisterExpenseUseCase
 
         await _unitOfWork.Commit();
 
-        return new ResponseRegisteredExpenseJson();
+        return _mapper.Map<ResponseRegisteredExpenseJson>(entity);
     }
 
     private void Validate(RequestExpenseJson request)
