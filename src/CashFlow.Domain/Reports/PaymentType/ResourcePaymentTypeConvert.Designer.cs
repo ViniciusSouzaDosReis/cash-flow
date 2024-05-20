@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CashFlow.Communication.PaymentTypes {
+namespace CashFlow.Domain.Reports.PaymentType {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace CashFlow.Communication.PaymentTypes {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CashFlow.Communication.PaymentTypes.ResourcePaymentTypeConvert", typeof(ResourcePaymentTypeConvert).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CashFlow.Domain.Reports.PaymentType.ResourcePaymentTypeConvert", typeof(ResourcePaymentTypeConvert).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
